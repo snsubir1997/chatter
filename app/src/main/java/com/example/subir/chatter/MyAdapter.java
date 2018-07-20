@@ -1,4 +1,4 @@
-package com.example.subir.recyclerviewdemo;
+package com.example.subir.chatter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -9,11 +9,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.Parse;
+import com.parse.ParseInstallation;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
-    private ItemData[] itemDatas;
+    List<ItemData> itemDatas;
 
-    public MyAdapter(@NonNull ItemData[] itemDatas) {
+    public MyAdapter(@NonNull List<ItemData> itemDatas) {
         this.itemDatas = itemDatas;
     }
 
@@ -29,15 +37,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
-        holder.nameTextView.setText(itemDatas[position].getName());
-        holder.noTextView.setText(itemDatas[position].getNo());
-        holder.emailTextView.setText(itemDatas[position].getEmail());
-        holder.iconImageView.setImageResource(itemDatas[position].getUrl());
+        final ItemData itemData = itemDatas.get(position);
+
+        holder.nameTextView.setText(itemData.getName());
+        holder.iconImageView.setImageResource(itemData.getUrl());
 
         holder.nameTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), itemDatas[position].getName(), Toast.LENGTH_LONG).show();
+                ParseUser user = new ParseUser();
+                user.addUnique("following",itemData.getName());
+                user.saveEventually();
+                Toast.makeText(v.getContext(), itemData.getName(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -45,22 +56,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return itemDatas.length;
+        return itemDatas.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView nameTextView;
-        public TextView emailTextView;
-        public TextView noTextView;
         public ImageView iconImageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            nameTextView = itemView.findViewById(R.id.name);
-            emailTextView = itemView.findViewById(R.id.email);
-            noTextView = itemView.findViewById(R.id.phoneno);
-            iconImageView = itemView.findViewById(R.id.contactpic);
+            nameTextView = itemView.findViewById(R.id.follower);
+            iconImageView = itemView.findViewById(R.id.tickImg);
         }
 
     }

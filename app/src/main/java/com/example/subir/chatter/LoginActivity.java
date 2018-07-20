@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.sign_in:
                 String username = usr.getText().toString();
                 String password = pwd.getText().toString();
-                ParseUser.logInInBackground(username, password, new LogInCallback() {
+                ParseUser.logInInBackground("subir", "123", new LogInCallback() {
 
                     @Override
                 public void done(ParseUser parseUser, ParseException e) {
