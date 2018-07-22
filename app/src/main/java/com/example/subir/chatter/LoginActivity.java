@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.subir.chatter.HomeScreen.NewsFeed;
 import com.parse.LogInCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
@@ -57,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.sign_in:
                 String username = usr.getText().toString();
                 String password = pwd.getText().toString();
-                ParseUser.logInInBackground("subir", "123", new LogInCallback() {
+                ParseUser.logInInBackground(username, password, new LogInCallback() {
 
                     @Override
                 public void done(ParseUser parseUser, ParseException e) {
@@ -86,7 +87,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                         // don't forget to change the line below with the names of your Activities
-                        Intent intent = new Intent(LoginActivity.this, FollowListActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, NewsFeed.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                     }

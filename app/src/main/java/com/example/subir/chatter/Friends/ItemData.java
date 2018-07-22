@@ -1,4 +1,4 @@
-package com.example.subir.chatter;
+package com.example.subir.chatter.Friends;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;

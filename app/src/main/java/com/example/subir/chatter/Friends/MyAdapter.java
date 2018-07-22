@@ -1,4 +1,4 @@
-package com.example.subir.chatter;
+package com.example.subir.chatter.Friends;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -10,12 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.subir.chatter.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.parse.SignUpCallback;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 

@@ -1,4 +1,4 @@
-package com.example.subir.chatter;
+package com.example.subir.chatter.Friends;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,6 +14,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.example.subir.chatter.LoginActivity;
+import com.example.subir.chatter.R;
+import com.example.subir.chatter.TweetsActivity;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
@@ -36,7 +39,7 @@ public class FollowListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_follow_list);
     }
 
     @Override
@@ -106,6 +109,9 @@ public class FollowListActivity extends AppCompatActivity {
                 ParseUser.logOut();
                 alertDisplayer("So, you're going...", "Ok...Bye-bye then");
                 return true;
+            case R.id.following:
+                Intent intent1 = new Intent(FollowListActivity.this,FollowListActivity.class);
+                startActivity(intent1);
             default:
                 return super.onOptionsItemSelected(item);
         }

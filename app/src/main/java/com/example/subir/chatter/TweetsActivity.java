@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.subir.chatter.HomeScreen.NewsFeed;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
@@ -40,9 +41,8 @@ public class TweetsActivity extends AppCompatActivity implements View.OnClickLis
                 ParseObject object = new ParseObject("Tweets");
                 object.put("username", currentUser.getUsername());
                 object.put("tweet", _tweet.getText().toString());
-                object.add("xyz","hello");
                 object.saveInBackground();
-                Intent intent = new Intent(TweetsActivity.this, FollowListActivity.class);
+                Intent intent = new Intent(TweetsActivity.this, NewsFeed.class);
                 startActivity(intent);
                 break;
             case R.id.clearButton:
