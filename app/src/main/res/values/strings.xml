@@ -14,4 +14,7 @@
     <string name="register">Register</string>
     <string name="back_to_login">Back to Login</string>
     <string name="follow_show">follow_show</string>
+    <string name="enter_tweet_here">Enter tweet here</string>
+    <string name="tweet">Tweet</string>
+    <string name="clear">Clear</string>
 </resources>

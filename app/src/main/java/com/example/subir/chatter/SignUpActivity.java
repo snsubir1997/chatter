@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.parse.Parse;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.ParseInstallation;
 
@@ -62,6 +63,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                         }
                     }
                 });
+
+                ParseObject object = new ParseObject("addedUsers");
+                object.put("username", usr.getText().toString());
+                object.put("phoneno", phno.getText().toString());
+                object.saveInBackground();
                 break;
             case R.id.textViewLogin:
                 Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
@@ -81,7 +87,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                         // don't forget to change the line below with the names of your Activities
-                        Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
+                        Intent intent = new Intent(SignUpActivity.this, FollowListActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                     }
